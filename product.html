@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DhisaAi Complete Analytics - AI/ML Solutions</title>
-     <link rel="icon" type="image/x-icon" href="C:\Users\jeeva\OneDrive\Desktop\Freelance Project\images\image - 2.png">
+    <title>DhishaAI Complete Analytics</title>
+    <link rel="icon" type="image/x-icon" href="C:\Users\jeeva\OneDrive\Desktop\Freelance Project\images\image - 2.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Simplified Color Scheme */
+        /* Orange and Blue Color Scheme */
         :root {
-            --primary: #4361ee;
-            --secondary: #3f37c9;
-            --accent: #4895ef;
-            --dark: #1a1a2e;
-            --light: #f8f9fa;
-            --text: #333;
-            --text-light: #6c757d;
-            --section-bg: #fff;
+            --primary: #2563eb;  /* Blue-600 */
+            --secondary: #1d4ed8; /* Blue-700 */
+            --accent: #f97316;   /* Orange-500 */
+            --dark: #1e293b;      /* Slate-800 */
+            --light: #f8fafc;     /* Slate-50 */
+            --text: #334155;      /* Slate-700 */
+            --text-light: #64748b; /* Slate-600 */
+            --section-bg: #ffffff;
             --section-padding: 3rem 1.5rem;
             --border-radius: 12px;
             --box-shadow: 0 5px 15px rgba(0,0,0,0.05);
@@ -49,7 +49,7 @@
         
         h1 { font-size: 2.5rem; }
         h2 { font-size: 2rem; color: var(--primary); }
-        h3 { font-size: 1.5rem; color: var(--secondary); }
+        h3 { font-size: 1.5rem; color: var(--accent); }
         h4 { font-size: 1.25rem; }
         
         p {
@@ -87,6 +87,8 @@
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.6s ease;
+            background-color: var(--section-bg);
+            z-index: 1;
         }
         
         section.visible {
@@ -94,9 +96,46 @@
             transform: translateY(0);
         }
         
+        /* Cyber Background Elements */
+        .cyber-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+        
+        .cyber-particle {
+            position: absolute;
+            background: rgba(37, 99, 235, 0.6);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        
+        .cyber-line {
+            position: absolute;
+            background: linear-gradient(to right, rgba(37, 99, 235, 0.4), transparent);
+            height: 1px;
+            pointer-events: none;
+            transform-origin: left center;
+        }
+        
+        .cyber-node {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            pointer-events: none;
+            box-shadow: 0 0 10px 2px var(--accent);
+        }
+        
         /* Header */
         header {
-            background: rgba(26, 26, 46, 0.95);
+            background: rgba(30, 41, 59, 0.95);
             color: var(--light);
             position: sticky;
             top: 0;
@@ -194,18 +233,20 @@
             transition: all 0.3s ease;
             border: 2px solid transparent;
             white-space: nowrap;
+            position: relative;
+            overflow: hidden;
         }
         
         .btn-primary {
             background: var(--primary);
             color: white;
-            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
         }
         
         .btn-primary:hover {
             background: var(--secondary);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(67, 97, 238, 0.4);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
         }
         
         .btn-outline {
@@ -219,6 +260,18 @@
             color: white;
         }
         
+        .btn-accent {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+        }
+        
+        .btn-accent:hover {
+            background: #ea580c; /* Orange-600 */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4);
+        }
+        
         .btn-sm {
             padding: 0.5rem 1.2rem;
             font-size: 0.9rem;
@@ -228,23 +281,68 @@
             margin-right: 0.5rem;
         }
         
+        /* Glow Effect for Buttons */
+        .btn-glow {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .btn-glow::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                rgba(255,255,255,0.3) 0%, 
+                rgba(255,255,255,0.1) 50%, 
+                rgba(255,255,255,0.3) 100%);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .btn-glow:hover::before {
+            opacity: 1;
+            animation: glow 1.5s infinite;
+        }
+        
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, rgba(26, 26, 46, 0.9), rgba(63, 55, 201, 0.8)), 
-                        url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(37, 99, 235, 0.8));
             color: white;
             text-align: center;
-            padding: 6rem 1.5rem;
+            padding: 8rem 1.5rem;
             position: relative;
             overflow: hidden;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 L0,100 Z" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/></svg>');
+            background-size: 50px 50px;
+            opacity: 0.3;
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
         }
         
         .hero h1 {
             color: white;
             margin-bottom: 1.5rem;
             animation: fadeInUp 0.8s ease;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
         
         .hero p {
@@ -253,6 +351,7 @@
             margin: 0 auto 2.5rem;
             animation: fadeInUp 0.8s ease 0.2s forwards;
             opacity: 0;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
         
         .hero-buttons {
@@ -264,44 +363,126 @@
             opacity: 0;
         }
         
-        /* About Section */
-        .about-section {
+        /* Vision & Mission Section */
+        .vision-section {
             background: var(--section-bg);
         }
         
-        .about-content {
+        .vision-content {
             display: flex;
             flex-wrap: wrap;
             gap: 2rem;
-            align-items: center;
         }
         
-        .about-text, .about-image {
+        .vision-box, .mission-box {
             flex: 1;
             min-width: 300px;
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
         
-        .about-image {
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--box-shadow);
+        .vision-box:hover, .mission-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .vision-box {
+            border-top: 5px solid var(--primary);
         }
         
         .mission-box {
-            background: var(--primary);
-            color: white;
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            margin-top: 2rem;
+            border-top: 5px solid var(--accent);
         }
         
-        .mission-box h3, .mission-box p {
-            color: white;
+        .vision-box h3, .mission-box h3 {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        /* Solutions Section */
+        .solutions-section {
+            background-color: #f8fafc;
+        }
+        
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .solution-category {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: var(--box-shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .solution-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .solution-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(249, 115, 22, 0.05) 100%);
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .solution-category:hover::before {
+            opacity: 1;
+        }
+        
+        .solution-category h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #eee;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .solution-list {
+            margin-left: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .solution-list li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .solution-list li:before {
+            content: '\f054';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 0.8rem;
         }
         
         /* Products Section */
         .products-section {
-            background-color: #f8f9fa;
+            background: var(--section-bg);
         }
         
         .product-card {
@@ -313,6 +494,8 @@
             height: 100%;
             display: flex;
             flex-direction: column;
+            position: relative;
+            overflow: hidden;
         }
         
         .product-card:hover {
@@ -320,15 +503,42 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
         
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(249, 115, 22, 0.05) 100%);
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .product-card:hover::before {
+            opacity: 1;
+        }
+        
         .product-icon {
             font-size: 2.5rem;
             color: var(--primary);
             margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover .product-icon {
+            transform: scale(1.1);
+            color: var(--accent);
         }
         
         .product-features {
             margin: 1.5rem 0;
             flex-grow: 1;
+            position: relative;
+            z-index: 1;
         }
         
         .product-features li {
@@ -348,11 +558,13 @@
         
         /* Cards */
         .card {
-            background: var(--section-bg);
+            background: white;
             border-radius: var(--border-radius);
             padding: 1.5rem;
             box-shadow: var(--box-shadow);
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
         
         .card:hover {
@@ -360,16 +572,45 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
         
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(249, 115, 22, 0.05) 100%);
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .card:hover::before {
+            opacity: 1;
+        }
+        
         .card-icon {
             font-size: 2rem;
             color: var(--primary);
             margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover .card-icon {
+            transform: scale(1.1);
+            color: var(--accent);
         }
         
         /* Grid Layouts */
         .grid {
             display: grid;
             gap: 1.5rem;
+        }
+        
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         }
         
         .grid-3 {
@@ -387,7 +628,7 @@
         .industry-icon {
             font-size: 2rem;
             color: var(--primary);
-            background: rgba(67, 97, 238, 0.1);
+            background: rgba(37, 99, 235, 0.1);
             width: 70px;
             height: 70px;
             border-radius: 50%;
@@ -402,10 +643,124 @@
             color: white;
             text-align: center;
             border-radius: var(--border-radius);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 L0,100 Z" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></svg>');
+            background-size: 50px 50px;
+            opacity: 0.5;
+            z-index: 0;
         }
         
         .contact-section h2 {
             color: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-section p {
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-section .hero-buttons {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Contact Info Section */
+        .contact-info-section {
+            background: var(--light);
+            padding: var(--section-padding);
+        }
+        
+        .contact-info-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-info-card {
+            flex: 1;
+            min-width: 250px;
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .contact-info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(249, 115, 22, 0.05) 100%);
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .contact-info-card:hover::before {
+            opacity: 1;
+        }
+        
+        .contact-info-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            background: rgba(37, 99, 235, 0.1);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-info-card:hover .contact-info-icon {
+            transform: scale(1.1);
+            color: var(--accent);
+        }
+        
+        .contact-info-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .contact-info-card p {
+            margin-bottom: 1.5rem;
+            color: var(--text);
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
         }
         
         /* Footer */
@@ -414,6 +769,20 @@
             color: white;
             text-align: center;
             padding: 3rem 0 2rem;
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 L0,100 Z" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/></svg>');
+            background-size: 50px 50px;
+            opacity: 0.3;
+            z-index: 0;
         }
         
         .footer-logo {
@@ -424,6 +793,8 @@
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
+            position: relative;
+            z-index: 1;
         }
         
         .footer-links {
@@ -432,6 +803,8 @@
             flex-wrap: wrap;
             gap: 1.5rem;
             margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
         }
         
         .footer-links a {
@@ -445,6 +818,8 @@
         
         .social-links {
             margin: 2rem 0;
+            position: relative;
+            z-index: 1;
         }
         
         .social-links a {
@@ -463,6 +838,8 @@
         .copyright {
             font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.7);
+            position: relative;
+            z-index: 1;
         }
         
         /* Animations */
@@ -482,14 +859,36 @@
             }
         }
         
-        .floating {
-            animation: floating 6s ease-in-out infinite;
-        }
-        
         @keyframes floating {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-10px); }
             100% { transform: translateY(0px); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes glow {
+            0% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+            100% { opacity: 0.3; }
+        }
+        
+        @keyframes cyberPulse {
+            0% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.1); }
+            100% { opacity: 0.3; transform: scale(1); }
+        }
+        
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        .pulse {
+            animation: pulse 3s ease-in-out infinite;
         }
         
         .delay-1 { animation-delay: 0.2s; }
@@ -554,16 +953,16 @@
                 margin-bottom: 1rem;
             }
             
-            .about-content {
+            .vision-content {
                 flex-direction: column;
             }
             
-            .about-text, .about-image {
+            .vision-box, .mission-box {
                 width: 100%;
             }
             
-            .mission-box {
-                padding: 1.5rem;
+            .contact-info-card {
+                min-width: 100%;
             }
             
             .card {
@@ -617,11 +1016,21 @@
                 padding: 2rem 1rem;
             }
             
-            .mission-box {
-                padding: 1.2rem;
+            .contact-info-section {
+                padding: 2rem 1rem;
+            }
+            
+            .contact-info-card {
+                padding: 1.5rem;
             }
             
             .industry-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+            
+            .contact-info-icon {
                 width: 60px;
                 height: 60px;
                 font-size: 1.5rem;
@@ -681,6 +1090,9 @@
     </style>
 </head>
 <body>
+    <!-- Cyber Background Elements -->
+    <div class="cyber-bg" id="cyberBg"></div>
+
     <header id="mainHeader">
         <div class="header-container container">
             <a href="#" class="logo">
@@ -692,7 +1104,8 @@
             <nav>
                 <ul id="navMenu">
                     <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
+                    <li><a href="#vision">Vision & Mission</a></li>
+                    <li><a href="#solutions">Our Solutions</a></li>
                     <li><a href="#products">Products</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -703,53 +1116,117 @@
     <main>
         <!-- Hero Section -->
         <section id="home" class="hero">
-            <div class="container">
+            <div class="container hero-content">
                 <h1>DhishaAI Complete Analytics</h1>
                 <h1>Transform Your Business with AI/ML Solutions</h1>
                 <p class="delay-1">Harness the power of artificial intelligence and machine learning to drive innovation, efficiency, and growth across your organization.</p>
                 <div class="hero-buttons delay-2">
-                    <a href="#contact" class="btn btn-primary">
+                    <a href="#contact" class="btn btn-accent btn-glow">
                         <i class="fas fa-rocket"></i> Get Started
                     </a>
-                    <a href="#products" class="btn btn-outline">
+                    <a href="#products" class="btn btn-outline btn-glow">
                         <i class="fas fa-box-open"></i> Our Products
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- About Us Section -->
-        <section id="about" class="about-section">
+        <!-- Vision & Mission Section -->
+        <section id="vision" class="vision-section">
             <div class="container">
-                <h2>About DhisaAi</h2>
-                <div class="about-content">
-                    <div class="about-text">
-                        <p>DhisaAi is a premier provider of artificial intelligence and machine learning solutions, committed to empowering businesses across industries with transformative AI technologies that drive measurable results.</p>
-                        <p>Since our founding in 2020, our multidisciplinary team of data scientists, engineers, and domain experts has been delivering cutting-edge solutions that combine technical excellence with deep business understanding.</p>
-                        
-                        <div class="mission-box">
-                            <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
-                            <p>To make enterprise-grade AI accessible and actionable for organizations of all sizes. We're dedicated to demystifying artificial intelligence and delivering solutions that create immediate business value while building long-term competitive advantage.</p>
-                        </div>
+                <h2>Our Vision & Mission</h2>
+                
+                <div class="vision-content">
+                    <div class="vision-box">
+                        <h3><i class="fas fa-eye"></i> Vision</h3>
+                        <p>To lead the global transformation toward intelligent, ethical, and human-centered AI, enabling organizations and individuals to unlock the full power of data.</p>
                     </div>
-                    <div class="about-image floating">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="AI Technology">
+                    
+                    <div class="mission-box">
+                        <h3><i class="fas fa-bullseye"></i> Mission</h3>
+                        <p>We deliver scalable AI, ML, and GenAI solutions that solve real-world business problems, while empowering professionals through hands-on training and upskilling in AI.</p>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <h3>Our Core Values</h3>
-                <div class="grid grid-3">
-                    <div class="card">
-                        <h4><i class="fas fa-lightbulb"></i> Innovation</h4>
-                        <p>We pioneer novel AI applications that solve real business problems in ways that were previously unimaginable.</p>
+        <!-- Our Solutions Section -->
+        <section id="solutions" class="solutions-section">
+            <div class="container">
+                <h2>Our Solutions</h2>
+                <p>We offer comprehensive AI/ML solutions across multiple domains to address your business challenges:</p>
+                
+                <div class="solutions-grid">
+                    <div class="solution-category">
+                        <h3><i class="fas fa-graduation-cap"></i> Learning & Development</h3>
+                        <ul class="solution-list">
+                            <li>Tools: SQL/Python/PBI/Tableau</li>
+                            <li>Data Science fundamentals</li>
+                            <li>Data Engineering best practices</li>
+                            <li>Gen AI applications</li>
+                            <li>Phyzital Performance training</li>
+                            <li>Placement assistance</li>
+                        </ul>
                     </div>
-                    <div class="card">
-                        <h4><i class="fas fa-shield-alt"></i> Integrity</h4>
-                        <p>We develop ethical AI systems with built-in fairness, transparency, and accountability measures.</p>
+                    
+                    <div class="solution-category">
+                        <h3><i class="fas fa-chart-line"></i> Marketing Analytics</h3>
+                        <ul class="solution-list">
+                            <li>Segmentation & Targeting</li>
+                            <li>Marketing Mix Models – Spend optimization</li>
+                            <li>Personalization: Socio-digital marketing</li>
+                            <li>Market Basket Analysis</li>
+                            <li>Loyalty optimization</li>
+                            <li>Pricing strategies</li>
+                        </ul>
                     </div>
-                    <div class="card">
-                        <h4><i class="fas fa-hands-helping"></i> Client Focus</h4>
-                        <p>Your challenges become our challenges. We measure our success by your business outcomes.</p>
+                    
+                    <div class="solution-category">
+                        <h3><i class="fas fa-shopping-cart"></i> Sales Analytics</h3>
+                        <ul class="solution-list">
+                            <li>Sales force enablement</li>
+                            <li>Insight based selling</li>
+                            <li>Assortment planning</li>
+                            <li>Recommendation Engines</li>
+                            <li>Shelf space utilization</li>
+                            <li>Counselling support</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="solution-category">
+                        <h3><i class="fas fa-truck"></i> Supply Chain Analytics</h3>
+                        <ul class="solution-list">
+                            <li>Demand Forecasting</li>
+                            <li>Logistic & Route Optimization</li>
+                            <li>Inventory optimization</li>
+                            <li>Back-office automation and RPA</li>
+                            <li>Warehouse & Vehicle Space Optimization</li>
+                            <li>Fraud detection</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="solution-category">
+                        <h3><i class="fas fa-industry"></i> Manufacturing Analytics</h3>
+                        <ul class="solution-list">
+                            <li>Production planning</li>
+                            <li>Predictive maintenance</li>
+                            <li>Quality Assurance through AI (Computer Vision)</li>
+                            <li>Process optimization</li>
+                            <li>Anomaly detection</li>
+                            <li>Risk analysis</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="solution-category">
+                        <h3><i class="fas fa-users"></i> Customer Analytics</h3>
+                        <ul class="solution-list">
+                            <li>Persona Classification and Profiling</li>
+                            <li>Customer experience analysis</li>
+                            <li>Customer journey mapping</li>
+                            <li>Churn prediction</li>
+                            <li>Sentiment analysis</li>
+                            <li>Lifetime value prediction</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -780,7 +1257,7 @@
                             </ul>
                         </div>
                         
-                        <a href="#contact" class="btn btn-primary">
+                        <a href="#contact" class="btn btn-primary btn-glow">
                             <i class="fas fa-info-circle"></i> Learn More
                         </a>
                     </div>
@@ -803,7 +1280,7 @@
                             </ul>
                         </div>
                         
-                        <a href="#contact" class="btn btn-primary">
+                        <a href="#contact" class="btn btn-primary btn-glow">
                             <i class="fas fa-info-circle"></i> Learn More
                         </a>
                     </div>
@@ -826,7 +1303,7 @@
                             </ul>
                         </div>
                         
-                        <a href="#contact" class="btn btn-primary">
+                        <a href="#contact" class="btn btn-primary btn-glow">
                             <i class="fas fa-info-circle"></i> Learn More
                         </a>
                     </div>
@@ -834,7 +1311,7 @@
                 
                 <div style="text-align: center; margin-top: 3rem;">
                     <p>All our products come with comprehensive documentation, SDKs for popular programming languages, and dedicated support.</p>
-                    <a href="#contact" class="btn btn-primary">
+                    <a href="#contact" class="btn btn-accent btn-glow">
                         <i class="fas fa-envelope"></i> Request Product Demo
                     </a>
                 </div>
@@ -861,7 +1338,7 @@
                         </div>
                         <h4>Personalized Recommendations</h4>
                         <p>AI-driven product suggestions that increase conversion and customer satisfaction.</p>
-                        <a href="#contact" class="btn btn-outline btn-sm">Learn More</a>
+                        <a href="#contact" class="btn btn-outline btn-sm btn-glow">Learn More</a>
                     </div>
                     <div class="card">
                         <div class="card-icon">
@@ -869,7 +1346,7 @@
                         </div>
                         <h4>Demand Forecasting</h4>
                         <p>Predict inventory needs with unprecedented accuracy to optimize stock levels.</p>
-                        <a href="#contact" class="btn btn-outline btn-sm">Learn More</a>
+                        <a href="#contact" class="btn btn-outline btn-sm btn-glow">Learn More</a>
                     </div>
                     <div class="card">
                         <div class="card-icon">
@@ -877,7 +1354,7 @@
                         </div>
                         <h4>Omnichannel Experience</h4>
                         <p>Seamless integration across all customer touchpoints for unified experiences.</p>
-                        <a href="#contact" class="btn btn-outline btn-sm">Learn More</a>
+                        <a href="#contact" class="btn btn-outline btn-sm btn-glow">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -902,7 +1379,7 @@
                         </div>
                         <h4>Demand Sensing</h4>
                         <p>Real-time analysis of market signals to anticipate demand fluctuations.</p>
-                        <a href="#contact" class="btn btn-outline btn-sm">Learn More</a>
+                        <a href="#contact" class="btn btn-outline btn-sm btn-glow">Learn More</a>
                     </div>
                     <div class="card">
                         <div class="card-icon">
@@ -910,7 +1387,7 @@
                         </div>
                         <h4>Inventory Optimization</h4>
                         <p>AI-driven inventory management to reduce waste and maximize availability.</p>
-                        <a href="#contact" class="btn btn-outline btn-sm">Learn More</a>
+                        <a href="#contact" class="btn btn-outline btn-sm btn-glow">Learn More</a>
                     </div>
                     <div class="card">
                         <div class="card-icon">
@@ -918,7 +1395,7 @@
                         </div>
                         <h4>New Product Forecasting</h4>
                         <p>Predict success of new product launches before they hit the market.</p>
-                        <a href="#contact" class="btn btn-outline btn-sm">Learn More</a>
+                        <a href="#contact" class="btn btn-outline btn-sm btn-glow">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -943,7 +1420,7 @@
                         </div>
                         <h4>Computer Vision QC</h4>
                         <p>Automated visual inspection with AI-powered defect detection.</p>
-                        <a href="#contact" class="btn btn-outline btn-sm">Learn More</a>
+                        <a href="#contact" class="btn btn-outline btn-sm btn-glow">Learn More</a>
                     </div>
                     <div class="card">
                         <div class="card-icon">
@@ -951,7 +1428,7 @@
                         </div>
                         <h4>Predictive Maintenance</h4>
                         <p>Anticipate equipment failures before they occur.</p>
-                        <a href="#contact" class="btn btn-outline btn-sm">Learn More</a>
+                        <a href="#contact" class="btn btn-outline btn-sm btn-glow">Learn More</a>
                     </div>
                     <div class="card">
                         <div class="card-icon">
@@ -959,7 +1436,7 @@
                         </div>
                         <h4>Process Optimization</h4>
                         <p>Continuous improvement through AI-driven process analysis.</p>
-                        <a href="#contact" class="btn btn-outline btn-sm">Learn More</a>
+                        <a href="#contact" class="btn btn-outline btn-sm btn-glow">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -984,7 +1461,7 @@
                         </div>
                         <h4>Diagnostic Support</h4>
                         <p>AI-assisted diagnosis for improved accuracy and speed.</p>
-                        <a href="#contact" class="btn btn-outline btn-sm">Learn More</a>
+                        <a href="#contact" class="btn btn-outline btn-sm btn-glow">Learn More</a>
                     </div>
                     <div class="card">
                         <div class="card-icon">
@@ -992,7 +1469,7 @@
                         </div>
                         <h4>Patient Flow Optimization</h4>
                         <p>Predictive models for bed management and resource allocation.</p>
-                        <a href="#contact" class="btn btn-outline btn-sm">Learn More</a>
+                        <a href="#contact" class="btn btn-outline btn-sm btn-glow">Learn More</a>
                     </div>
                     <div class="card">
                         <div class="card-icon">
@@ -1000,7 +1477,7 @@
                         </div>
                         <h4>Personalized Treatment</h4>
                         <p>Tailored treatment plans based on patient data and outcomes.</p>
-                        <a href="#contact" class="btn btn-outline btn-sm">Learn More</a>
+                        <a href="#contact" class="btn btn-outline btn-sm btn-glow">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -1012,12 +1489,58 @@
                 <h2>Ready to Transform Your Business with AI?</h2>
                 <p>Contact us today to discuss how our AI/ML solutions can drive innovation, efficiency, and growth for your organization.</p>
                 <div class="hero-buttons">
-                    <a href="mailto:info@dhisaai.com" class="btn btn-primary">
+                    <a href="mailto:Contactus@Dhishaai.com" class="btn btn-accent btn-glow">
                         <i class="fas fa-envelope"></i> Email Us
                     </a>
-                    <a href="tel:+919886096090" class="btn btn-outline">
+                    <a href="tel:09886096090" class="btn btn-outline btn-glow">
                         <i class="fas fa-phone"></i> Call Us
                     </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Info Section -->
+        <section class="contact-info-section">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <p>Get in touch with our team for any inquiries or to discuss your project requirements.</p>
+                
+                <div class="contact-info-container">
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Our Location</h3>
+                        <p>DhishaAI complete analytics F007, 4th floor,<br>
+                        Arya Hub Mall, Prasanth Extension,<br>
+                        Whitefield, Bengaluru, Karnataka 560066</p>
+                        <a href="https://www.google.com/maps/dir//Hope+Farm,+Arya+Hub+Mall,+4F07,+near+ITPL+Main+Road,+Bengaluru,+Karnataka+560066/@12.9833773,77.6695769,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3bae14fa032a9dbf:0x4cc7dfed24ba24f5!2m2!1d77.7519788!2d12.9833903?entry=ttu&g_ep=EgoyMDI1MDYxMC4xIKXMDSoASAFQAw%3D%3D" 
+                           class="btn btn-primary btn-glow" target="_blank">
+                            <i class="fas fa-directions"></i> Get Directions
+                        </a>
+                    </div>
+                    
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h3>Phone</h3>
+                        <p>+91 9886096090</p>
+                        <a href="tel:+919886096090" class="btn btn-primary btn-glow">
+                            <i class="fas fa-phone"></i> Call Now
+                        </a>
+                    </div>
+                    
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Email</h3>
+                        <p>contactus@dhishaai.com</p>
+                        <a href="mailto:contactus@dhishaai.com" class="btn btn-primary btn-glow">
+                            <i class="fas fa-paper-plane"></i> Send Email
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1026,16 +1549,14 @@
     <footer>
         <div class="container">
             <div class="footer-logo">
-                <i class="fas fa-brain"></i>
-                <span>Dhisa</span>Ai
+                <span>DhishaAI</span>Complete Analytics
             </div>
             <div class="footer-links">
                 <a href="#home">Home</a>
-                <a href="#about">About</a>
+                <a href="#vision">Vision & Mission</a>
+                <a href="#solutions">Our Solutions</a>
                 <a href="#products">Products</a>
                 <a href="#contact">Contact</a>
-                <a href="#">Privacy</a>
-                <a href="#">Terms</a>
             </div>
             <div class="social-links">
                 <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
@@ -1126,6 +1647,79 @@
             });
         };
 
+        // Cyber background animation
+        const createCyberBackground = () => {
+            const cyberBg = document.getElementById('cyberBg');
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            
+            // Create particles
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('cyber-particle');
+                
+                // Random position
+                const size = Math.random() * 5 + 1;
+                const posX = Math.random() * width;
+                const posY = Math.random() * height;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}px`;
+                particle.style.top = `${posY}px`;
+                
+                // Random animation
+                const duration = Math.random() * 10 + 5;
+                particle.style.animation = `cyberPulse ${duration}s infinite`;
+                
+                cyberBg.appendChild(particle);
+            }
+            
+            // Create connecting lines
+            for (let i = 0; i < 30; i++) {
+                const line = document.createElement('div');
+                line.classList.add('cyber-line');
+                
+                // Random position and angle
+                const posX1 = Math.random() * width;
+                const posY1 = Math.random() * height;
+                const posX2 = posX1 + (Math.random() * 200 - 100);
+                const posY2 = posY1 + (Math.random() * 200 - 100);
+                const length = Math.sqrt(Math.pow(posX2 - posX1, 2) + Math.pow(posY2 - posY1, 2));
+                const angle = Math.atan2(posY2 - posY1, posX2 - posX1) * 180 / Math.PI;
+                
+                line.style.width = `${length}px`;
+                line.style.left = `${posX1}px`;
+                line.style.top = `${posY1}px`;
+                line.style.transform = `rotate(${angle}deg)`;
+                
+                // Random animation
+                const duration = Math.random() * 10 + 5;
+                line.style.animation = `fadeIn ${duration}s infinite alternate`;
+                
+                cyberBg.appendChild(line);
+            }
+            
+            // Create nodes
+            for (let i = 0; i < 20; i++) {
+                const node = document.createElement('div');
+                node.classList.add('cyber-node');
+                
+                // Random position
+                const posX = Math.random() * width;
+                const posY = Math.random() * height;
+                
+                node.style.left = `${posX}px`;
+                node.style.top = `${posY}px`;
+                
+                // Random animation
+                const duration = Math.random() * 5 + 2;
+                node.style.animation = `cyberPulse ${duration}s infinite`;
+                
+                cyberBg.appendChild(node);
+            }
+        };
+
         // Initialize animations when page loads
         document.addEventListener('DOMContentLoaded', () => {
             if (window.scrollY > 50) {
@@ -1133,6 +1727,7 @@
             }
             
             animateSections();
+            createCyberBackground();
             
             // Hero animations
             const heroTitle = document.querySelector('.hero h1');
