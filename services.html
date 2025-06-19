@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Orange & Blue Color Scheme */
+        /* Updated Color Scheme */
         :root {
-            --primary: #f97316;   /* Orange-500 */
-            --secondary: #ea580c; /* Orange-600 */
-            --accent: #2563eb;    /* Blue-600 */
+            --primary: #073e5c;   /* Blue */
+            --secondary: #052c43; /* Darker Blue */
+            --accent: #ef7602;    /* Orange */
             --dark: #1e1e2e;      /* Dark navy */
             --light: #f8fafc;     /* Light background */
             --text: #334155;      /* Dark gray for text */
@@ -38,11 +38,13 @@
             margin-top: 0;
             font-weight: 700;
             line-height: 1.3;
+            color: var(--primary);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
         }
         
         h1 { font-size: 2.5rem; }
-        h2 { font-size: 2rem; color: var(--primary); }
-        h3 { font-size: 1.5rem; color: var(--accent); }
+        h2 { font-size: 2rem; }
+        h3 { font-size: 1.5rem; }
         h4 { font-size: 1.25rem; }
         
         p {
@@ -230,13 +232,13 @@
         .btn-primary {
             background: var(--primary);
             color: white;
-            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+            box-shadow: 0 4px 15px rgba(7, 62, 92, 0.3);
         }
         
         .btn-primary:hover {
             background: var(--secondary);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4);
+            box-shadow: 0 6px 20px rgba(7, 62, 92, 0.4);
         }
         
         .btn-outline {
@@ -253,13 +255,13 @@
         .btn-accent {
             background: var(--accent);
             color: white;
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 4px 15px rgba(239, 118, 2, 0.3);
         }
         
         .btn-accent:hover {
-            background: #1d4ed8;
+            background: #d46902;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+            box-shadow: 0 6px 20px rgba(239, 118, 2, 0.4);
         }
         
         .btn-sm {
@@ -273,7 +275,7 @@
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, rgba(30, 30, 46, 0.9), rgba(249, 115, 22, 0.8)), 
+            background: linear-gradient(135deg, rgba(30, 30, 46, 0.9), rgba(7, 62, 92, 0.8)), 
                         url('https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
@@ -333,14 +335,14 @@
         .ai-element {
             position: absolute;
             opacity: 0.7;
-            filter: drop-shadow(0 5px 15px rgba(37, 99, 235, 0.3));
+            filter: drop-shadow(0 5px 15px rgba(7, 62, 92, 0.3));
         }
         
         .ai-element:nth-child(1) {
             top: 20%;
             left: 10%;
             font-size: 3rem;
-            color: var(--primary);
+            color: var(--accent);
             animation: float 8s ease-in-out infinite;
         }
         
@@ -348,7 +350,7 @@
             top: 60%;
             left: 15%;
             font-size: 2rem;
-            color: var(--accent);
+            color: var(--primary);
             animation: float 6s ease-in-out infinite reverse;
         }
         
@@ -364,11 +366,11 @@
             bottom: 20%;
             right: 15%;
             font-size: 2.5rem;
-            color: var(--primary);
+            color: var(--accent);
             animation: float 5s ease-in-out infinite reverse 1s;
         }
         
-        /* Vision & Mission Section */
+        /* Vision & Mission Section - Reduced animations */
         .vision-mission {
             background: linear-gradient(135deg, #f8fafc, #e2e8f0);
             position: relative;
@@ -386,13 +388,13 @@
             border-radius: var(--border-radius);
             padding: 2rem;
             box-shadow: var(--box-shadow);
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
         
         .vm-box:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             box-shadow: var(--box-shadow-hover);
         }
         
@@ -403,25 +405,23 @@
             left: 0;
             width: 4px;
             height: 100%;
-            background: var(--accent);
+            background: var(--primary);
             transition: all 0.3s ease;
         }
         
         .vm-box:hover:after {
-            width: 8px;
-            background: var(--primary);
+            width: 6px;
         }
         
         .vm-icon {
             font-size: 2.5rem;
-            color: var(--primary);
+            color: var(--accent);
             margin-bottom: 1.5rem;
             transition: all 0.3s ease;
         }
         
         .vm-box:hover .vm-icon {
-            transform: scale(1.1);
-            color: var(--accent);
+            transform: scale(1.05);
         }
         
         .vm-box h3 {
@@ -437,13 +437,12 @@
             left: 0;
             width: 50px;
             height: 3px;
-            background: var(--primary);
+            background: var(--accent);
             transition: all 0.3s ease;
         }
         
         .vm-box:hover h3:after {
-            width: 70px;
-            background: var(--accent);
+            width: 60px;
         }
         
         /* Industries Section */
@@ -465,24 +464,23 @@
             padding: 2rem 1.5rem;
             text-align: center;
             box-shadow: var(--box-shadow);
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.3s ease;
         }
         
         .industry-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             box-shadow: var(--box-shadow-hover);
         }
         
         .industry-icon {
             font-size: 2.5rem;
-            color: var(--primary);
+            color: var(--accent);
             margin-bottom: 1rem;
             transition: all 0.3s ease;
         }
         
         .industry-card:hover .industry-icon {
-            transform: scale(1.2);
-            color: var(--accent);
+            transform: scale(1.1);
         }
         
         .industry-card h3 {
@@ -518,11 +516,11 @@
             align-items: center;
             justify-content: center;
             min-height: 100px;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.3s ease;
         }
         
         .client-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             box-shadow: var(--box-shadow-hover);
             border-bottom: 3px solid var(--accent);
         }
@@ -531,37 +529,37 @@
             color: var(--primary);
             font-weight: 600;
             transition: all 0.3s ease;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
         }
         
         .client-card:hover h3 {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
         
-        /* Cards */
+        /* Cards - Reduced animations */
         .card {
             background: var(--section-bg);
             border-radius: var(--border-radius);
             padding: 1.5rem;
             box-shadow: var(--box-shadow);
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.3s ease;
         }
         
         .card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             box-shadow: var(--box-shadow-hover);
             border-bottom: 3px solid var(--primary);
         }
         
         .card-icon {
             font-size: 2rem;
-            color: var(--primary);
+            color: var(--accent);
             margin-bottom: 1rem;
             transition: all 0.3s ease;
         }
         
         .card:hover .card-icon {
-            transform: scale(1.2);
-            color: var(--accent);
+            transform: scale(1.1);
         }
         
         /* Grid Layouts */
@@ -574,7 +572,7 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         }
         
-        /* Industry Sections */
+        /* Industry Sections - Reduced animations */
         .industry-header {
             display: flex;
             align-items: center;
@@ -584,8 +582,8 @@
         
         .industry-icon {
             font-size: 2rem;
-            color: var(--primary);
-            background: rgba(249, 115, 22, 0.1);
+            color: var(--accent);
+            background: rgba(239, 118, 2, 0.1);
             width: 70px;
             height: 70px;
             border-radius: 50%;
@@ -593,7 +591,6 @@
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
-            animation: float 6s ease-in-out infinite;
         }
         
         /* Contact Section */
@@ -632,24 +629,23 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.3s ease;
         }
         
         .contact-info-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             box-shadow: var(--box-shadow-hover);
         }
         
         .contact-info-icon {
             font-size: 2rem;
-            color: var(--primary);
+            color: var(--accent);
             margin-bottom: 1rem;
             transition: all 0.3s ease;
         }
         
         .contact-info-card:hover .contact-info-icon {
-            transform: scale(1.2);
-            color: var(--accent);
+            transform: scale(1.1);
         }
         
         .contact-info-card h3 {
@@ -748,7 +744,7 @@
             font-size: 1.5rem;
             animation: bounce 2s infinite;
             cursor: pointer;
-            background: rgba(249, 115, 22, 0.7);
+            background: rgba(7, 62, 92, 0.7);
             width: 40px;
             height: 40px;
             border-radius: 50%;
@@ -1120,7 +1116,7 @@
         </section>
 
         <!-- Retail Section -->
-        <section id="retail" class="industry-section fade-in">
+        <section id="retail" class="industry-section">
             <div class="container">
                 <div class="industry-header">
                     <div class="industry-icon">
@@ -1162,7 +1158,7 @@
         </section>
 
         <!-- CPG Section -->
-        <section id="cpg" class="industry-section fade-in">
+        <section id="cpg" class="industry-section">
             <div class="container">
                 <div class="industry-header">
                     <div class="industry-icon">
@@ -1203,7 +1199,7 @@
         </section>
 
         <!-- Manufacturing Section -->
-        <section id="manufacturing" class="industry-section fade-in">
+        <section id="manufacturing" class="industry-section">
             <div class="container">
                 <div class="industry-header">
                     <div class="industry-icon">
@@ -1244,7 +1240,7 @@
         </section>
 
         <!-- Healthcare Section -->
-        <section id="healthcare" class="industry-section fade-in">
+        <section id="healthcare" class="industry-section">
             <div class="container">
                 <div class="industry-header">
                     <div class="industry-icon">
